@@ -1,0 +1,31 @@
+.task {
+  color: black;
+  border: none;
+  padding: 20px;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.task.selected {
+  border: 10px solid orange;
+}
+
+.task.highPriority {
+  background: #ff6700;
+}
+
+.task.preHighPriority {
+  background: #ff9248;
+}
+
+.task.middlePriority {
+  background: #ffb38a;
+}
+
+.task.lowPriority {
+  background: #ffd7b5;
+}
+
+.lineThrough {
+  text-decoration: line-through;
+}

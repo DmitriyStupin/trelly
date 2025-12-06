@@ -1,0 +1,54 @@
+// ---- DETAILS ----
+
+export type TaskDetailsDto = {
+  title: string | null
+  boardTitle: string
+  description: string | null
+}
+
+export type TaskDetailsData = {
+  id: string
+  attributes: TaskDetailsDto
+}
+
+export type GetTaskOutput = {
+  data: TaskDetailsData
+}
+
+export const getTask = (taskId: string, boardId: string) => {
+  return fetch(
+    `https://trelly.it-incubator.app/api/1.0/boards/${boardId}/tasks/${taskId}`,
+    {
+      headers: {
+        "api-key": "cf60db86-8e7f-4d64-b085-f791bc69c47a",
+      },
+    }
+  ).then((res) => res.json() as Promise<GetTaskOutput>);
+};
+
+// ---- LIST ----
+
+export type GlobalTaskListItemDto = {
+  priority: number
+  title: string | null
+  status: number
+  addedAt: string
+  boardId: string
+}
+
+export type GlobalTaskListItemJsonApiData = {
+  id: string
+  attributes: GlobalTaskListItemDto
+}
+
+export type GlobalTaskListResponse = {
+  data: GlobalTaskListItemJsonApiData[]
+}
+
+export const getTasks = () => {
+  return fetch("https://trelly.it-incubator.app/api/1.0/boards/tasks", {
+    headers: {
+      "api-key": "cf60db86-8e7f-4d64-b085-f791bc69c47a",
+    },
+  }).then((res) => res.json() as Promise<GlobalTaskListResponse>);
+};
